@@ -35,7 +35,8 @@ public class ProductReader
             int line = 1;
             while ((rec = reader.readLine()) != null) {
                 String[] fields = rec.split(",");
-                System.out.printf("%-15s %-20s %-30s %8.2f\n", fields[0], fields[1], fields[2], Double.parseDouble(fields[3]));
+                Product product = new Product(fields[0], fields[1], fields[2], Double.parseDouble(fields[3]));
+                System.out.printf("%-15s %-20s %-30s %8.2f\n", product.getID(), product.getName(), product.getDescription(), product.getCost());
             }
 
                 reader.close();

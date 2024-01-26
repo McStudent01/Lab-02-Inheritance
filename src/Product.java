@@ -1,32 +1,18 @@
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class Product
 {
-    private String firstName;
-    private String lastName;
     private String ID;
-    private String title;
-    private int YOB;
+    private String name;
+    private String description;
+    private double cost;
 
-    public Product(String firstName, String lastName, String ID, String title, int YOB)
+    public Product(String ID, String name, String description, double cost)
     {
-        this.firstName = firstName;
-        this.lastName = lastName;
         this.ID = ID;
-        this.title = title;
-        this.YOB = YOB;
-    }
-
-    public String getFirstName()
-    {
-        return firstName;
-    }
-
-    public String getLastName()
-    {
-        return lastName;
+        this.name = name;
+        this.description = description;
+        this.cost = cost;
     }
 
     public String getID()
@@ -34,62 +20,43 @@ public class Product
         return ID;
     }
 
-    public String getTitle()
-    {
-        return title;
-    }
-
-    public int getYOB()
-    {
-        return YOB;
-    }
-    public void setFirstName(String firstName)
-    {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName)
-    {
-        this.lastName = lastName;
-    }
-
     public void setID(String ID)
     {
         this.ID = ID;
     }
 
-    public void setTitle(String title)
+    public String getName()
     {
-        this.title = title;
+        return name;
     }
 
-    public void setYOB(int YOB)
+    public void setName(String name)
     {
-        this.YOB = YOB;
-    }
-    public String fullName()
-    {
-        return firstName + " " + lastName;
+        this.name = name;
     }
 
-    public String formalName()
+    public String getDescription()
     {
-        return title + " " + fullName();
+        return description;
     }
 
-    public String getAge()
+    public void setDescription(String description)
     {
-        return getAge(Calendar.getInstance().get(Calendar.YEAR));
+        this.description = description;
     }
 
-    public String getAge(int year)
+    public double getCost()
     {
-        int age = year - YOB;
-        return Integer.toString(age);
+        return cost;
+    }
+
+    public void setCost(double cost)
+    {
+        this.cost = cost;
     }
 
     public String toCSVDataRecord()
     {
-        return String.format("%s,%s,%s,%s,%d", firstName, lastName, ID, title, YOB);
+        return String.format("%s,%s,%s,%.2f", ID, name, description, cost);
     }
 }
