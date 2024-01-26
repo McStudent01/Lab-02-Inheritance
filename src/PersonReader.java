@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
@@ -12,12 +13,14 @@ public class PersonReader {
         File selectedFile;
         String rec = "";
 
+        ArrayList<Person> people = new ArrayList<>();
+
         try {
             // Set initial directory for file chooser
             File workingDirectory = new File(System.getProperty("user.dir"));
             chooser.setCurrentDirectory(workingDirectory);
 
-            // Let user select the file
+            // Let the user select the file
             if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 selectedFile = chooser.getSelectedFile();
                 Path file = selectedFile.toPath();
@@ -34,12 +37,17 @@ public class PersonReader {
                 int line = 1;
                 while ((rec = reader.readLine()) != null) {
                     String[] fields = rec.split(",");  // Assuming comma-separated values
+
+                    Person person = new Person(fields[0], fields[1], fields[2], fields[3], Integer.parseInt(fields[4]));
+                    people.add(person);
+
                     System.out.printf("%-15s %-20s %-20s %-10s %-5s\n", fields[0], fields[1], fields[2], fields[3], fields[4]);
                     line++;
                 }
 
                 reader.close();
                 System.out.println("\nData file read!");
+
             } else {
                 System.out.println("No file selected. Exiting.");
             }

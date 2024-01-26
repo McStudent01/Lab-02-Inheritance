@@ -17,6 +17,39 @@ public class Person
         this.title = title;
         this.YOB = YOB;
     }
+
+    public String getIDNum() {
+        return IDNum;
+    }
+
+    public void setIDNum(String IDNum) {
+        this.IDNum = IDNum;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String fullName()
     {
         return firstName + "" + lastName;
@@ -61,6 +94,7 @@ public class Person
     }
     public String toCSVDataRecord()
     {
-        return String.format("%s,%s,%s,%s",IDNum, firstName, lastName, title, YOB);
+        return String.format("%s,%s,%s,%s,%d", getIDNum(), getFirstName(), getLastName(), getTitle(), getYOB());
     }
+
 }

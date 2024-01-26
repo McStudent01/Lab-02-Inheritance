@@ -18,12 +18,12 @@ public class Person_Generator
         Path file = Paths.get(workingDirectory.getPath() + "\\src\\personTestData.txt");
 
         boolean done = false;
-//        a.	ID (a String)
-//        b.	FirstName
-//        c.	LastName
-//        d.	Title (a string like Mr., Mrs., Ms., Dr., etc.)
-//        e.	YearOfBirth (an int)
-       // String personRec = "";
+//        a.    ID (a String)
+//        b.    FirstName
+//        c.    LastName
+//        d.    Title (a string like Mr., Mrs., Ms., Dr., etc.)
+//        e.    YearOfBirth (an int)
+        // String personRec = "";
         String ID = "";
         String firstName = "";
         String lastName = "";
@@ -32,14 +32,14 @@ public class Person_Generator
 
 
         do {
-            ID = SafeInput.getNonZeroLenString(in, "Enter the ID [6 digits]: ");
-            firstName = SafeInput.getNonZeroLenString(in, "Enter your first name: ");
-            lastName = SafeInput.getNonZeroLenString(in, "Enter your last name: ");
-            title = SafeInput.getNonZeroLenString(in, "Enter your title: ");
-            YOB = SafeInput.getRangedInt(in,"Enter the year of birth: ", 1000, 9999);
+            ID = SafeInput.getNonZeroLenString(in, "Enter the ID [6 digits] ");
+            firstName = SafeInput.getNonZeroLenString(in, "Enter your first name ");
+            lastName = SafeInput.getNonZeroLenString(in, "Enter your last name ");
+            title = SafeInput.getNonZeroLenString(in, "Enter your title ");
+            YOB = SafeInput.getRangedInt(in,"Enter the year of birth ", 1000, 9999);
 
-          //  personRec = ID + "," + firstName + "," + lastName + "," + title + "," + YOB;
-           Person person = new Person(ID,firstName,lastName,title,YOB);
+            //  personRec = ID + "," + firstName + "," + lastName + "," + title + "," + YOB;
+            Person person = new Person(ID,firstName,lastName,title,YOB);
             people.add(person);
 
             done = SafeInput.getYNConfirm(in, "Are you done?");
