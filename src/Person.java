@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Person
 {
     private String IDNum;
@@ -14,4 +16,10 @@ public class Person
         this.title = title;
         this.YOB = YOB;
     }
+    public String fullName()
+    {
+        return firstName + "" + lastName;
+    }
+
+
 }
