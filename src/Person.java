@@ -29,6 +29,16 @@ public class Person
         LocalDate today = LocalDate.now();
         return today.getYear() - YOB;
     }
-
+    public int getYOB()
+    {
+        return YOB;
+    }
+    public void setYOB(int YOB) {
+        if (YOB >= 1940 && YOB <= 2000) {
+            this.YOB = YOB;
+        } else {
+            throw new IllegalArgumentException("Year of birth must be between 1940 and 2000.");
+        }
+    }
 
 }
