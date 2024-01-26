@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.Calendar;
 
 public class Person
 {
@@ -24,21 +25,38 @@ public class Person
     {
         return title + "" + fullName();
     }
-    public int getAge()
-    {
-        LocalDate today = LocalDate.now();
-        return today.getYear() - YOB;
-    }
     public int getYOB()
     {
         return YOB;
     }
-    public void setYOB(int YOB) {
+    public void setYOB(int YOB)
+    {
         if (YOB >= 1940 && YOB <= 2000) {
             this.YOB = YOB;
         } else {
             throw new IllegalArgumentException("Year of birth must be between 1940 and 2000.");
         }
     }
+    public String getAge()
+    {
+        LocalDate today = LocalDate.now();
+        int age = today.getYear() -YOB;
+        return String.valueOf(age);
+    }
+    public String getAge(int year)
+    {
+        Calendar birthCalendar = Calendar.getInstance();
+        birthCalendar.set(YOB, Calendar.JANUARY, 1);
 
+        Calendar specifiedYearCalendar = Calendar.getInstance();
+        specifiedYearCalendar.set(year, Calendar.JANUARY, 1);
+
+        int age = specifiedYearCalendar.get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR);
+
+        if (specifiedYearCalendar.before(birthCalendar))
+        {
+            age--;
+        }
+        return String.valueOf(age);
+    }
 }
