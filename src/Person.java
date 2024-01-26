@@ -24,6 +24,11 @@ public class Person
     {
         return title + "" + fullName();
     }
+    public int getAge()
+    {
+        LocalDate today = LocalDate.now();
+        return today.getYear() - YOB;
+    }
 
 
 }
