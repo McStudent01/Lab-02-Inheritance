@@ -20,6 +20,10 @@ public class Person
     {
         return firstName + "" + lastName;
     }
+    public String formalName()
+    {
+        return title + "" + fullName();
+    }
 
 
 }
