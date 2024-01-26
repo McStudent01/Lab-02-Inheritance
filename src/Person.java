@@ -59,4 +59,8 @@ public class Person
         }
         return String.valueOf(age);
     }
+    public String toCSVDataRecord()
+    {
+        return String.format("%s,%s,%s,%s",IDNum, firstName, lastName, title, YOB);
+    }
 }
