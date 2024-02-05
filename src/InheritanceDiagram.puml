@@ -1,0 +1,48 @@
+@startuml
+
+class Person {
+  -IDNum: String
+  -firstName: String
+  -lastName: String
+  -title: String
+  -YOB: int
+  -age: int
+  +Person(IDNum: String, firstName: String, lastName: String, title: String, YOB: int)
+  +getIDNum(): String
+  +getFirstName(): String
+  +getLastName(): String
+  +getTitle(): String
+  +getYOB(): int
+  +getAge(): int
+  +setIDNum(IDNum: String): void
+  +setFirstName(firstName: String): void
+  +setLastName(lastName: String): void
+  +setTitle(title: String): void
+  +setYOB(YOB: int): void
+  +fullInfo(): String
+  +formalName(): String
+  +toCSVDataRecord(): String
+}
+
+class Worker {
+  -hourlyPayRate: double
+  +Worker(IDNum: String, firstName: String, lastName: String, title: String, YOB: int, hourlyPayRate: double)
+  +getHourlyPayRate(): double
+  +setHourlyPayRate(hourlyPayRate: double): void
+  +calculateWeeklyPay(hoursWorked: double): double
+  +displayWeeklyPay(hoursWorked: double): String
+}
+
+class SalaryWorker {
+  -annualSalary: double
+  +SalaryWorker(IDNum: String, firstName: String, lastName: String, title: String, YOB: int, hourlyPayRate: double, annualSalary: double)
+  +getAnnualSalary(): double
+  +setAnnualSalary(annualSalary: double): void
+  +calculateWeeklyPay(hoursWorked: double): double
+  +displayWeeklyPay(hoursWorked: double): String
+}
+
+Person --|> Worker
+Worker --|> SalaryWorker
+
+@enduml
