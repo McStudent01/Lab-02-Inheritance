@@ -39,3 +39,4 @@ public class WorkerTest
         assertEquals(expectedOutput, worker.displayWeeklyPay(40));
     }
 }
+

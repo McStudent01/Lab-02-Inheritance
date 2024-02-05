@@ -33,3 +33,4 @@ public class SalaryWorker extends Worker
                 "This is a fraction of the yearly salary.", weeklyPay);
     }
 }
+
