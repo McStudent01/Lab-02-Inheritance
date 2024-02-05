@@ -8,7 +8,7 @@ public class Person
     private String lastName;
     private String title;
     private int YOB;
-
+    private int age;
     public Person(String IDNum, String firstName, String lastName, String title, int YOB)
     {
         this.IDNum = IDNum;
@@ -16,6 +16,7 @@ public class Person
         this.lastName = lastName;
         this.title = title;
         this.YOB = YOB;
+        this.age = calculateAge();
     }
 
     public String getIDNum() {
@@ -50,13 +51,21 @@ public class Person
         this.title = title;
     }
 
+    public int getAge()
+    {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public String fullName()
     {
-        return firstName + "" + lastName;
+        return firstName + " " + lastName;
     }
     public String formalName()
     {
-        return title + "" + fullName();
+        return title + " " + fullName();
     }
     public int getYOB()
     {
@@ -66,35 +75,32 @@ public class Person
     {
         if (YOB >= 1940 && YOB <= 2000) {
             this.YOB = YOB;
+            this.age = calculateAge();
         } else {
             throw new IllegalArgumentException("Year of birth must be between 1940 and 2000.");
         }
     }
-    public String getAge()
+    private int calculateAge()
+{
+    Calendar birthCalendar = Calendar.getInstance();
+    birthCalendar.set(YOB, Calendar.JANUARY, 1);
+
+    Calendar currentCalendar = Calendar.getInstance();
+
+    int age = currentCalendar.get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR);
+
+    if (currentCalendar.before(birthCalendar))
     {
-        LocalDate today = LocalDate.now();
-        int age = today.getYear() -YOB;
-        return String.valueOf(age);
+        age--;
     }
-    public String getAge(int year)
-    {
-        Calendar birthCalendar = Calendar.getInstance();
-        birthCalendar.set(YOB, Calendar.JANUARY, 1);
+    return age;
+}
 
-        Calendar specifiedYearCalendar = Calendar.getInstance();
-        specifiedYearCalendar.set(year, Calendar.JANUARY, 1);
 
-        int age = specifiedYearCalendar.get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR);
-
-        if (specifiedYearCalendar.before(birthCalendar))
-        {
-            age--;
-        }
-        return String.valueOf(age);
-    }
     public String toCSVDataRecord()
     {
-        return String.format("%s,%s,%s,%s,%d", getIDNum(), getFirstName(), getLastName(), getTitle(), getYOB());
+        int age = getAge();
+        return String.format("%s,%s,%s,%s,%d,%d", getIDNum(), getFirstName(), getLastName(), getTitle(), getYOB(), age);
     }
 
 }
