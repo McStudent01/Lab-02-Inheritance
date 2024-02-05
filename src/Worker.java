@@ -48,4 +48,8 @@ public class Worker extends Person
         return String.format("Weekly Pay Information:\n" + "Regular Hours: %.2f, Regular Pay: $%.2f\n" + "Overtime Hours: %.2f, Overtime Pay: $%.2f\n" + "Total Pay: $%.2f", regularHours, regularPay, overtimeHours, overtimePay, totalPay);
 
     }
+    public String fullInfo() {
+        return String.format("ID: %s\nName: %s\nTitle: %s\nYear of Birth: %d\nHourly Pay Rate: $%.2f",
+                getIDNum(), fullName(), getTitle(), getYOB(), getHourlyPayRate());
+    }
 }
