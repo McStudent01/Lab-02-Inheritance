@@ -1,21 +1,41 @@
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class WorkerTest
+public class WorkerTest
+{
+
+    @Test
+    public void testCalculateWeeklyPayRegularHours()
     {
-        public static void main(String[] args)
-        {
-            Worker worker = new Worker("456", "Alice", "Smith", "Ms.", 1985, 15.0);
-
-            System.out.println("Personal Information:");
-            System.out.println("Full Name: " + worker.fullName());
-            System.out.println("Title: " + worker.getTitle());
-            System.out.println("Year of Birth: " + worker.getYOB());
-
-            System.out.println("\nWeekly Pay Information:");
-            System.out.println(worker.displayWeeklyPay(35));  // Standard hours
-            System.out.println(worker.displayWeeklyPay(45));  // Overtime hours
-            System.out.println(worker.displayWeeklyPay(30));  // Less than standard hours
-        }
+        Worker worker = new Worker("123", "John", "Doe", "Mr.", 1990, 15.0);
+        double weeklyPay = worker.calculateWeeklyPay(35);
+        assertEquals(525.0, weeklyPay, 0.01);
     }
+
+    @Test
+    public void testCalculateWeeklyPayOvertimeHours()
+    {
+        Worker worker = new Worker("456", "Jane", "Smith", "Ms.", 1985, 20.0);
+        double weeklyPay = worker.calculateWeeklyPay(50);
+        assertEquals(1100.0, weeklyPay, 0.01);
+    }
+
+    @Test
+    public void testCalculateWeeklyPayNoOvertime()
+    {
+        Worker worker = new Worker("789", "Bob", "Johnson", "Mr.", 1982, 18.0);
+        double weeklyPay = worker.calculateWeeklyPay(40);
+        assertEquals(720.0, weeklyPay, 0.01);
+    }
+
+    @Test
+    public void testDisplayWeeklyPay()
+    {
+        Worker worker = new Worker("123", "John", "Doe", "Mr.", 1990, 15.0);
+        String expectedOutput = "Weekly Pay Information:\n" +
+                "Regular Hours: 40.00, Regular Pay: $600.00\n" +
+                "Overtime Hours: 0.00, Overtime Pay: $0.00\n" +
+                "Total Pay: $600.00";
+        assertEquals(expectedOutput, worker.displayWeeklyPay(40));
+    }
+}
