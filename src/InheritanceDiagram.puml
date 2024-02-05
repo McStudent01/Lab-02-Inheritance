@@ -46,4 +46,3 @@ Person --|> Worker
 Worker --|> SalaryWorker
 
 @enduml
-
